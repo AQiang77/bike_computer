@@ -30,7 +30,7 @@ int bike_app_run(void)
     ride_engine_init();
     navigation_service_init();
 
-    result = charger_service_init();
+    result = charger_service_init(RT_NULL);
     if (result != RT_EOK)
     {
         rt_kprintf("Bike navigation continues without charger control\n");
