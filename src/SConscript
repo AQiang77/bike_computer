@@ -1,0 +1,17 @@
+import os
+from building import *
+
+cwd = GetCurrentDir()
+source_dirs = ['', 'app', 'modes', 'core', 'services', 'route', 'protocol', 'ui']
+
+src = []
+cpppath = []
+for directory in source_dirs:
+    path = os.path.join(cwd, directory)
+    pattern = os.path.join(directory, '*.c') if directory else '*.c'
+    src += Glob(pattern)
+    cpppath.append(path)
+
+group = DefineGroup('BikeComputer', src, depend=[''], CPPPATH=cpppath)
+
+Return('group')
